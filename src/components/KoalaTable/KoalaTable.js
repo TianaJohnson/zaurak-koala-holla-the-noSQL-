@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-
+import KoalaTableItems from './KoalaTableItems';
 import { connect } from 'react-redux';
-import koalas from '../../Redux/koalaReducer';
 
 class KoalaTable extends Component {
+
+    componentDidMount() {
+        const action = { type: 'FETCH_KOALAS'};
+        this.props.dispatch(action);
+    }
+
     render() {
+        console.log('Reduxstore', this.props.reduxStore);
+        
         return (
             <div>
+                {JSON.stringify(this.props.reduxStore)}
                 <table>
-                    <thead>
                         <th>
                             Name
                         </th>
@@ -24,27 +31,14 @@ class KoalaTable extends Component {
                         <th>
                             Notes
                         </th>
-                    </thead>
+
                     <tbody>
-                        {this.props.koalas.map(koala => (
-                            <tr>
-                                <td>
-                                    {this.props.koala.name}
-                                </td>
-                                <td>
-                                    {this.props.koala.gender}
-                                </td>
-                                <td>
-                                    {this.props.koala.age}
-                                </td>
-                                <td>
-                                    {this.props.koala.ready_to_transfer}
-                                </td>
-                                <td>
-                                    {this.props.koala.notes}
-                                </td>
-                            </tr>
-                            ))}
+                        {/* {this.props.reduxStore.koalas.map((koala, i) => {
+                            return (
+                                <KoalaTableItems koala={koala} key={i}/>
+                            )
+                        })} */}
+
 
                     </tbody>
 
@@ -56,8 +50,8 @@ class KoalaTable extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    koalas: state.koala,
+const mapStateToProps = (reduxStore) => ({
+    reduxStore: reduxStore,
 })
 
 export default connect(mapStateToProps)(KoalaTable);
