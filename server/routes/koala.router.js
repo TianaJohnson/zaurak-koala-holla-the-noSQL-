@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const databaseUrl = 'mongodb://localhost:27017/koalaholla';
 mongoose.connect(databaseUrl, { useNewUrlParser: true });
 
+
+
 mongoose.connection.once('connected', () => {
     console.log('mongoose connected to:', databaseUrl);
 });
@@ -36,6 +38,16 @@ router.get('/', (req, res) => {
 });
 
 // POST route
+
+router.post('/addkoala', (req, res) => {
+    const kaolaToAdd = req.body;
+    Koala.create(kaolaToAdd).then((createdKaola) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('there is an error in post', error);
+        res.sendStatus(500);
+    });
+});
 
 
 // PUT route
