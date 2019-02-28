@@ -41,7 +41,7 @@ class KoalaTableItems extends Component {
                     <td>
                         {
                         this.state.ready_to_transfer ?
-                        <button>
+                        <button disable>
                         Transfered
                         </button>
                         :
