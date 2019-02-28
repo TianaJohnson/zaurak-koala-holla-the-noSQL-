@@ -24,7 +24,7 @@ function* addKoalas(action) {
     }
 }
 
-function* updateKoala() {
+function* updateKoala(action) {
     try {
         yield axios.put(`/api/koala/updateKoala/${action.payload.id}`, action.payload);
         yield alert('Koala Set to Transfer');
