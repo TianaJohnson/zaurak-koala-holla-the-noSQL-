@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class KoalaTableItems extends Component {
     render(){
         return (
-            <div>
                 <tr>
                     <td>
                         {this.props.koala.name}
@@ -21,7 +20,6 @@ class KoalaTableItems extends Component {
                         {this.props.koala.notes}
                     </td>
                 </tr>
-            </div>
         )
     }
 }

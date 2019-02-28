@@ -14,7 +14,7 @@ class KoalaTable extends Component {
         
         return (
             <div>
-                {JSON.stringify(this.props.reduxStore)}
+                {/* {JSON.stringify(this.props.reduxStore)} */}
                 <table>
                         <th>
                             Name
@@ -33,11 +33,11 @@ class KoalaTable extends Component {
                         </th>
 
                     <tbody>
-                        {/* {this.props.reduxStore.koalas.map((koala, i) => {
+                        {this.props.reduxStore.map((koala, i) => {
                             return (
                                 <KoalaTableItems koala={koala} key={i}/>
                             )
-                        })} */}
+                        })}
 
 
                     </tbody>
