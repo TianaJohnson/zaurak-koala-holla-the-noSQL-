@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import KoalaTable from '../KoalaTable/KoalaTable';
+// import KoalaTable from '../KoalaTable/KoalaTable';
 import KoalaForm from '../KoalaForm/KoalaForm';
 
 
@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <h1>Koala Holla!</h1>
         <KoalaForm />
-        <KoalaTable />
+        {/* <KoalaTable /> */}
       </div>
     );
   }
