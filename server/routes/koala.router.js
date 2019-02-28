@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+
 const databaseUrl = 'mongodb://localhost:27017/koalaholla';
 mongoose.connect(databaseUrl, { useNewUrlParser: true });
 
@@ -25,17 +27,12 @@ const koalaSchema = new Schema({
 const Koala = mongoose.model('Koala', koalaSchema);
 // GET Route
 router.get('/', (req, res) => {
-    // REPLACE THIS with mongoose find
-    res.send([
-        {
-            _id: ObjectId("58de9673d0c1cb22fbcb2655"),
-            name: "Scotty",
-            gender: "M",
-            age: 4,
-            ready_to_transfer: true,
-            notes: "Born in Guatemala"
-        }
-    ])
+    Koala.find({}).then(results => {
+        res.send(results);
+    }).catch(error => {
+        console.log('there was a problem with GET', error);
+        res.sendStatus(500);
+    })
 });
 
 // POST route
