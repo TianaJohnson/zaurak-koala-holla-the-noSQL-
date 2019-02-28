@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
-
+const mongoose = require('mongoose');
 const databaseUrl = 'mongodb://localhost:27017/koalaholla';
 mongoose.connect(databaseUrl, { useNewUrlParser: true });
 
@@ -48,8 +47,6 @@ router.post('/addkoala', (req, res) => {
         res.sendStatus(500);
     });
 });
-
-
 
 // PUT route
 //Tiana
