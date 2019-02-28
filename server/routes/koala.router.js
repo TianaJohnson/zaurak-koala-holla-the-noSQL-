@@ -50,8 +50,18 @@ router.post('/addkoala', (req, res) => {
 });
 
 
-// PUT route
 
+// PUT route
+//Tiana
+router.put('/updatekoala/:id', (req, res) => {
+    //const updatedKoala = req.body;
+    Koala.findOneAndUpdate({_id: req.params.id}).then((updatedKoala) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error', error);
+        res.sendStatus(500);
+    });
+});
 
 // DELETE route
 
