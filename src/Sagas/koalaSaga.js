@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery } from 'redux-saga/effects';
 
 
 function* fetchKoalas() {
     try {
-        const response = yield axios.get(`/api/koalas`);
+        const response = yield axios.get(`/api/koala`);
         console.log(response);
         yield put({ type: 'SET_KOALAS', payload: response.data });
     } catch (error) {
@@ -13,7 +13,7 @@ function* fetchKoalas() {
     }
 }
 
-function* addKoalas() {
+function* addKoalas(action) {
     try {
         yield axios.post('/api/koala/addkoala', action.payload);
         const nextAction = {type: 'FETCH_KOALAS'};
