@@ -58,8 +58,8 @@ class KoalaTable extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = state => ({
     koala: state.koalas
-}
+})
 
 export default connect(mapStateToProps)(KoalaTable);
