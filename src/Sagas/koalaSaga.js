@@ -24,7 +24,19 @@ function* addKoalas() {
     }
 }
 
+function* updateKoala() {
+    try {
+        yield axios.put(`/api/koala/updateKoala/${action.payload.id}`, action.payload);
+        yield alert('Koala Set to Transfer');
+        yield put({ type: 'FETCH_KOALA'});
+    }catch(error){
+        console.log('Unable to transfer koala', error);
+        alert('Unable to transfer koala', error);
+    }
+}
+
 function* koalaSaga() {
+    yield takeLatest('UPDATE_KOALA', updateKoala)
     yield takeLatest('FETCH_KOALAS', fetchKoalas);
     yield takeEvery('ADD_KOALAS', addKoalas)
 }
