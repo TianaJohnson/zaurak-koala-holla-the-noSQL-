@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const databaseUrl = 'mongodb://localhost:27017/koalaholla';
+const mongoose = require('mongoose');
 mongoose.connect(databaseUrl, { useNewUrlParser: true });
 
 
@@ -51,6 +52,17 @@ router.post('/addkoala', (req, res) => {
 
 
 // PUT route
+//Tiana
+router.put('/updatekoala/:id', (req, res) => {
+    //const updatedKoala = req.body;
+    Koala.findOneAndUpdate({_id: req.params.id}).then((updatedKoala) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error', error);
+        res.sendStatus(500);
+    });
+});
+
 
 
 // DELETE route
