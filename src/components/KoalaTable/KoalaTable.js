@@ -53,6 +53,10 @@ class KoalaTable extends Component {
     }
 }
 
+// const mapStateToProps = state => ({
+//     koala: state.koalas
+// })
+
 const mapStateToProps = (reduxStore) => ({
     reduxStore: reduxStore,
 })

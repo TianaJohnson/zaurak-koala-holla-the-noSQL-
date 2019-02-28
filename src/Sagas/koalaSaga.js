@@ -16,10 +16,10 @@ function* fetchKoalas() {
 function* addKoalas(action) {
     try {
         yield axios.post('/api/koala/addkoala', action.payload);
-        const nextAction = {type: 'FETCH_KOALAS'};
+        const nextAction = { type: 'FETCH_KOALAS' };
         yield put(nextAction);
-        
-    }catch(error) {
+
+    } catch (error) {
         console.log('there is an error in addKoalas saga', error);
     }
 }
@@ -30,10 +30,20 @@ function* updateKoala(action) {
         console.log(action.payload);
         yield axios.put(`/api/koala/updateKoala/${id}`, action.payload);
         yield alert('Koala Set to Transfer');
-        yield put({ type: 'FETCH_KOALA'});
-    }catch(error){
+        yield put({ type: 'FETCH_KOALA' });
+    } catch (error) {
         console.log('Unable to transfer koala', error);
         alert('Unable to transfer koala', error);
+    }
+}
+
+function* deleteKoala(action) {
+    try {
+        yield axios.delete(`/api/koala/${action.payload}`);
+        yield put({ type: "DELETE_KOALAS" });
+    }
+    catch (error) {
+        yield console.log('error deleteKoalas saga', error);
     }
 }
 
@@ -41,6 +51,8 @@ function* koalaSaga() {
     yield takeLatest('UPDATE_KOALA', updateKoala)
     yield takeLatest('FETCH_KOALAS', fetchKoalas);
     yield takeEvery('ADD_KOALAS', addKoalas)
+    yield takeEvery('DELETE_KOALAS', deleteKoala)
+
 }
 
 export default koalaSaga;

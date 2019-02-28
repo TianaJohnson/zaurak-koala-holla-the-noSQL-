@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
+
 
 const databaseUrl = 'mongodb://localhost:27017/koalaholla';
 mongoose.connect(databaseUrl, { useNewUrlParser: true });
@@ -54,8 +54,9 @@ router.post('/addkoala', (req, res) => {
 // PUT route
 //Tiana
 router.put('/updatekoala/:id', (req, res) => {
-    //const updatedKoala = req.body;
+    //const updatedKoala = req.body
     Koala.findOneAndUpdate({_id: req.body._id}, req.body).then((updatedKoala) => {
+
         res.sendStatus(200);
     }).catch((error) => {
         console.log('Error in Put', error);
@@ -64,6 +65,14 @@ router.put('/updatekoala/:id', (req, res) => {
 });
 
 // DELETE route
-
+router.delete('/:id', (req, res) => {
+    // {_id: req.params.id} is like WHERE id = req.params.id
+    Koala.findOneAndRemove({ _id: req.params.id }).then((removedKoala) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error', error);
+        res.sendStatus(500);
+    });
+});
 
 module.exports = router;
