@@ -54,11 +54,12 @@ router.post('/addkoala', (req, res) => {
 // PUT route
 //Tiana
 router.put('/updatekoala/:id', (req, res) => {
-    //const updatedKoala = req.body;
-    Koala.findOneAndUpdate({ _id: req.params.id }).then((updatedKoala) => {
+    //const updatedKoala = req.body
+    Koala.findOneAndUpdate({_id: req.body._id}, req.body).then((updatedKoala) => {
+
         res.sendStatus(200);
     }).catch((error) => {
-        console.log('error', error);
+        console.log('Error in Put', error);
         res.sendStatus(500);
     });
 });

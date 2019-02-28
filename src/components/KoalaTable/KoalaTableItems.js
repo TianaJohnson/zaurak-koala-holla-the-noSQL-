@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class KoalaTableItems extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            ready_to_transfer: false,
+        }
+    }
+
+    updateKoala = (event) => {
+            console.log('update koala');
+            const action = {
+              type: 'UPDATE_KOALA',
+              payload:{
+                ready_to_transfer: true, id: this.props.koala._id
+              }
+            };
+            this.props.dispatch(action);
+          }
+
     render(){
         return (
                 <tr>
@@ -19,9 +38,21 @@ class KoalaTableItems extends Component {
                     <td>
                         {this.props.koala.notes}
                     </td>
+                    <td>
+                        {this.state.ready_to_transfer ?
+                        <button>
+                        Transfered
+                        </button>
+                        :
+                        <button onClick={this.updateKoala}>
+                            Ready to Transfer
+                        </button>
+                        }
+                    </td>
                 </tr>
         )
     }
 }
 
-export default KoalaTableItems;
+
+export default connect()(KoalaTableItems);

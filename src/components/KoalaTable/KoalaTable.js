@@ -31,6 +31,9 @@ class KoalaTable extends Component {
                         <th>
                             Notes
                         </th>
+                        <th>
+                            
+                        </th>
 
                     <tbody>
                         {this.props.reduxStore.map((koala, i) => {
