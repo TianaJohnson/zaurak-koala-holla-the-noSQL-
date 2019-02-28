@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import KoalaTable from '../Koala/KoalaTable';
+import KoalaForm from '../KoalaForm/KoalaForm';
 
 
 class App extends Component {
@@ -7,6 +9,8 @@ class App extends Component {
     return (
       <div>
         <h1>Koala Holla!</h1>
+        <KoalaForm />
+        <KoalaTable />
       </div>
     );
   }
