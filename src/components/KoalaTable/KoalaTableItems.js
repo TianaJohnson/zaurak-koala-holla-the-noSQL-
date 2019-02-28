@@ -39,15 +39,16 @@ class KoalaTableItems extends Component {
                         {this.props.koala.notes}
                     </td>
                     <td>
-                        {this.state.ready_to_transfer ?
-                        <button>
+                        {
+                        this.state.ready_to_transfer ?
+                        <button disable>
                         Transfered
                         </button>
                         :
                         <button onClick={this.updateKoala}>
                             Ready to Transfer
                         </button>
-                        }
+                    }
                     </td>
                 </tr>
         )
