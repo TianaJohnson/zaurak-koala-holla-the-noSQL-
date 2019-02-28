@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import KoalaTable from '../Koala/KoalaTable';
+import KoalaTable from '../KoalaTable/KoalaTable';
 import KoalaForm from '../KoalaForm/KoalaForm';
 
 
