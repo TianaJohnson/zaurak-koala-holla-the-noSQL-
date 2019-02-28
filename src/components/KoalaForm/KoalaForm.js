@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class KoalaForm extends Component {
 
     handleAddKoala = () => {
-        this.props.dispatch({ type: 'ADD_KOALA' });
+        this.props.dispatch({ type: 'ADD_KOALAS' });
     }
 
     render() {
