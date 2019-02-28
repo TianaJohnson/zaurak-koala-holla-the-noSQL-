@@ -26,27 +26,25 @@ class KoalaTable extends Component {
                         </th>
                     </thead>
                     <tbody>
-                        {this.props.koala.map((koalas) => {
-                            return (
+                        {this.props.koalas.map(koala => (
                             <tr>
                                 <td>
-                                    {this.props.koalas.name}
+                                    {this.props.koala.name}
                                 </td>
                                 <td>
-                                    {this.props.koalas.gender}
+                                    {this.props.koala.gender}
                                 </td>
                                 <td>
-                                    {this.props.koalas.age}
+                                    {this.props.koala.age}
                                 </td>
                                 <td>
-                                    {this.props.koalas.ready_to_transfer}
+                                    {this.props.koala.ready_to_transfer}
                                 </td>
                                 <td>
-                                    {this.props.koalas.notes}
+                                    {this.props.koala.notes}
                                 </td>
                             </tr>
-                            )
-                        })}
+                            ))}
 
                     </tbody>
 
@@ -58,8 +56,8 @@ class KoalaTable extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    koala: state.koalas
-}
+const mapStateToProps = state => ({
+    koalas: state.koala,
+})
 
 export default connect(mapStateToProps)(KoalaTable);
