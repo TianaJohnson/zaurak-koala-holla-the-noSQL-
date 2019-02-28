@@ -8,6 +8,7 @@ import logger from 'redux-logger';
 import koalas from './Redux/koalaReducer';
 import koalaSaga from './Sagas/koalaSaga';
 
+
 const sagaMiddleware = createSagaMiddleware();
 
 // import rootReducer from './redux/reducers'; // imports ./redux/reducers/index.js
@@ -27,6 +28,7 @@ const store = createStore(
 );
 
 sagaMiddleware.run(koalaSaga);
+
 
 ReactDOM.render(
     <Provider store={store}>

@@ -55,7 +55,7 @@ router.post('/addkoala', (req, res) => {
 //Tiana
 router.put('/updatekoala/:id', (req, res) => {
     //const updatedKoala = req.body;
-    Koala.findOneAndUpdate({_id: req.params.id}).then((updatedKoala) => {
+    Koala.findOneAndUpdate({ _id: req.params.id }).then((updatedKoala) => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log('error', error);
@@ -64,6 +64,14 @@ router.put('/updatekoala/:id', (req, res) => {
 });
 
 // DELETE route
-
+router.delete('/:id', (req, res) => {
+    // {_id: req.params.id} is like WHERE id = req.params.id
+    Koala.findOneAndRemove({ _id: req.params.id }).then((removedKoala) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error', error);
+        res.sendStatus(500);
+    });
+});
 
 module.exports = router;
